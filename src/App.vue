@@ -1,10 +1,20 @@
 <template>
     <div id="app">
         <h1>Clientes</h1>
+        <div class="cadastro">
+            <input type="text" placeholder="Nome" v-model="nomeField" /><br />
+            <input
+                type="text"
+                placeholder="Descrição"
+                v-model="descricaoField"
+            /><br />
+            <button @click="cadastrarCliente()">Cadastrar</button>
+        </div>
+        <hr />
         <div class="clientes">
-          <div v-for="cliente in clientes" :key="cliente.id">
-              <Cliente :cliente="cliente" />
-          </div>
+            <div v-for="cliente in clientes" :key="cliente.id">
+                <Cliente :cliente="cliente" />
+            </div>
         </div>
     </div>
 </template>
@@ -15,10 +25,8 @@ export default {
     name: "App",
     data() {
         return {
-            clienteEduardo: {
-                nome: "Eduardo Freire Fernandes",
-                descricao: "Descricao do objeto",
-            },
+            nomeField: "",
+            descricaoField: "",
             clientes: [
                 {
                     id: 1,
@@ -51,18 +59,36 @@ export default {
     components: {
         Cliente,
     },
+    methods: {
+        cadastrarCliente: function() {
+          this.clientes.push({nome: this.nomeField, descricao: this.descricaoField, id: Date.now()});
+          this.nomeField = "";
+          this.descricaoField = "";
+        }
+    }
 };
 </script>
 
 <style scoped>
-  #app {
+#app {
     text-align: center;
-  }
-  .clientes {
+    background-color: cyan;
+    background-image: linear-gradient(
+        to bottom right,
+        rgb(118, 245, 160),
+        rgb(22, 63, 27)
+    );
+}
+.clientes {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0px 10% 0px 10%;
-  }
+}
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>

@@ -38,11 +38,15 @@ export default {
     flex-wrap: wrap;
     color: darkblue;
     flex-grow: 4;
+    border-radius: 10px;
+    border: solid black 2px;
+    margin: 10px;
 }
 .cliente-normal {
-    background-color: aquamarine;
+    background-image: linear-gradient(to bottom right, aquamarine, rgba(72, 72, 221, 0.795));
+    
 }
 .cliente-premium {
-    background-color: gold;
+    background-image: linear-gradient(to bottom right, rgb(249, 250, 177), gold);
 }
 </style>
