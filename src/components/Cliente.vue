@@ -1,8 +1,11 @@
 <template>
     <div class="cliente">
+        <input type="text" v-model="nome">
+        <hr>
+        <input type="text" v-model="descricao">
         <h1>Componente Cliente</h1>
-        <p>{{ nome }}</p>
-        <p>{{ descricao }}</p>
+        <p>Nome: {{ nome }}</p>
+        <p>Descrição: {{ descricao }}</p>
     </div>
 </template>
 
