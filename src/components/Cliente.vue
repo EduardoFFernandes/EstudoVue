@@ -3,9 +3,10 @@
         <!-- <input type="text" v-model="cliente.nome">
         <hr>
         <input type="text" v-model="cliente.descricao"> -->
-        <p>Nome: {{ cliente.nome }}</p>
+        <p>Nome: {{ cliente.nome | processarNome}}</p>
         <p style="width: 100%">Descrição: {{ cliente.descricao }}</p>
-        <button @click="mudarCor()">Mudar a Cor</button>
+        <button class="button is-primary" @click="emitirEventoDeletar()">Deletar</button>
+        <button class="button is-primary" @click="mudarCor()">Mudar a Cor</button>
     </div>
 </template>
 
@@ -24,7 +25,15 @@ export default {
             this.isPremium = !this.isPremium;
             console.log("Click");
         },
+        emitirEventoDeletar: function() {
+            this.$emit("meDelete", this.cliente.id);
+        },
     },
+    filters: {
+        processarNome: function(value) {
+            return value.toUpperCase();
+        }
+    }
 };
 </script>
 
